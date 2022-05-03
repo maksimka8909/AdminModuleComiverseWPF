@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Fobos\RiderProjects\AdminPanelComiverse\AdminPanelComiverse\obj\Debug\net6.0-windows\
+C:\Users\Fobos\RiderProjects\AdminModuleComiverseWPF\AdminPanelComiverse\obj\Debug\net6.0-windows\
 AdminPanelComiverse
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\Fobos\RiderProjects\AdminPanelComiverse\AdminPanelComiverse\App.xaml
+C:\Users\Fobos\RiderProjects\AdminModuleComiverseWPF\AdminPanelComiverse\App.xaml
 2516587238
 
 401281956724
-214-488258798
+2201838657864
 AdminWindow.xaml;MainWindow.xaml;
 
-False
+True
 

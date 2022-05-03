@@ -1,30 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Fobos\\RiderProjects\\AdminPanelComiverse\\AdminPanelComiverse\\AdminPanelComiverse.csproj": {}
+    "C:\\Users\\Fobos\\RiderProjects\\AdminModuleComiverseWPF\\AdminPanelComiverse\\AdminPanelComiverse.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Fobos\\RiderProjects\\AdminPanelComiverse\\AdminPanelComiverse\\AdminPanelComiverse.csproj": {
+    "C:\\Users\\Fobos\\RiderProjects\\AdminModuleComiverseWPF\\AdminPanelComiverse\\AdminPanelComiverse.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Fobos\\RiderProjects\\AdminPanelComiverse\\AdminPanelComiverse\\AdminPanelComiverse.csproj",
+        "projectUniqueName": "C:\\Users\\Fobos\\RiderProjects\\AdminModuleComiverseWPF\\AdminPanelComiverse\\AdminPanelComiverse.csproj",
         "projectName": "AdminPanelComiverse",
-        "projectPath": "C:\\Users\\Fobos\\RiderProjects\\AdminPanelComiverse\\AdminPanelComiverse\\AdminPanelComiverse.csproj",
+        "projectPath": "C:\\Users\\Fobos\\RiderProjects\\AdminModuleComiverseWPF\\AdminPanelComiverse\\AdminPanelComiverse.csproj",
         "packagesPath": "C:\\Users\\Fobos\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Fobos\\RiderProjects\\AdminPanelComiverse\\AdminPanelComiverse\\obj\\",
+        "outputPath": "C:\\Users\\Fobos\\RiderProjects\\AdminModuleComiverseWPF\\AdminPanelComiverse\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Fobos\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Fobos\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0-windows"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -46,6 +41,18 @@
             "EntityFramework": {
               "target": "Package",
               "version": "[6.4.4, )"
+            },
+            "MaterialDesignColors": {
+              "target": "Package",
+              "version": "[2.0.6, )"
+            },
+            "MaterialDesignThemes": {
+              "target": "Package",
+              "version": "[4.5.0, )"
+            },
+            "MaterialDesignThemes.MahApps": {
+              "target": "Package",
+              "version": "[0.2.2, )"
             },
             "Microsoft.AspNetCore.Http.Features": {
               "target": "Package",
@@ -78,7 +85,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
