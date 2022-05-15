@@ -6,16 +6,168 @@
         xmlns:local="clr-namespace:AdminPanelComiverse"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="AdminWindow" Height="450" Width="800">
-    <Grid>
-        <DockPanel LastChildFill="True">
-            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
-                <Button Margin="5">Работа с таблицами</Button>
-                <Button Margin="5">Бэкап БД</Button>
-                <Button Margin="5">Журнал жалоб</Button>
-                <Button Margin="5">Выйти</Button>
-            </StackPanel>
-            <Grid Margin="5"></Grid>
-        </DockPanel>
+        Title="AdminWindow" WindowState="Maximized" Closing="Window_OnClosing">
+    <Grid Background="White">
+        <TabControl Background="Black">
+                <TabItem Name="tiComics" Background="#00A2E8" IsSelected="True" >
+                    <TabItem.Header >
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="3">Комиксы</TextBlock>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <DataGrid Grid.Row="1" 
+                                  Grid.ColumnSpan="4"
+                                  Grid.RowSpan="4"
+                                  Name="dgData"
+                                  Margin="5"
+                                  IsReadOnly="True"
+                                  SelectionMode="Single"
+                                  HorizontalAlignment="Stretch"
+                                  ColumnWidth="*"
+                                  CanUserAddRows="False"
+                                  CanUserReorderColumns="False"
+                                  CanUserDeleteRows="False"
+                                  CanUserSortColumns="False"></DataGrid>
+                        <Button Grid.Row="4" 
+                                Grid.Column="4"
+                                VerticalAlignment="Center"
+                                Name="btnExit"
+                                FontSize="20"
+                                Background="#00A2E8"
+                                Foreground="White"
+                                Margin="2,0,2,10" Click="BtnExit_OnClick">
+                            Выйти
+                        </Button>
+                        <ComboBox
+                            Margin="10"
+                            VerticalAlignment="Bottom"
+                            Name="cbList"
+                            FontSize="20" SelectionChanged="CbList_OnSelectionChanged">
+                            <ComboBoxItem Tag="comic" Content="Комиксы" IsSelected="True"></ComboBoxItem>  
+                            <ComboBoxItem Tag="author" Content="Авторы"></ComboBoxItem>  
+                            <ComboBoxItem Tag="editor" Content="Издатели"></ComboBoxItem>  
+                            <ComboBoxItem Tag="genre" Content="Жанры"></ComboBoxItem>  
+                        </ComboBox>
+                        <Button 
+                            Grid.Column="1" 
+                            Name="btnAdd"
+                            FontSize="20"
+                            Background="#00A2E8"
+                            Foreground="White"
+                            Margin="5,0,5,10"
+                            VerticalAlignment="Bottom" Click="BtnAdd_OnClick">
+                            Добавить
+                        </Button>
+                        <Button 
+                            Grid.Column="2" 
+                            Name="btnUpdate"
+                            FontSize="20"
+                            Background="#00A2E8"
+                            Foreground="White"
+                            Margin="5,0,5,10"
+                            VerticalAlignment="Bottom"
+                            Visibility="Hidden">
+                            Изменить
+                        </Button>
+                        <Button 
+                            Grid.Column="3" 
+                            Name="btnPullIssue"
+                            FontSize="20"
+                            Background="#00A2E8"
+                            Foreground="White"
+                            Margin="5,0,5,10"
+                            VerticalAlignment="Bottom" Click="BtnPullIssue_OnClick">
+                            Выпуски
+                        </Button>
+                    </Grid>
+                </TabItem>
+                <TabItem Name="tiUser" Background="#00A2E8">
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="3">
+                                Пользователи
+                            </TextBlock>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <DataGrid
+                            Name="dgUsers"
+                            Grid.Row="1" 
+                            Grid.ColumnSpan="5" 
+                            Grid.RowSpan="4"
+                            Margin="5"
+                            IsReadOnly="True"
+                            SelectionMode="Single"
+                            HorizontalAlignment="Stretch"
+                            ColumnWidth="*"
+                            CanUserAddRows="False"
+                            CanUserReorderColumns="False"
+                            CanUserDeleteRows="False"
+                            CanUserSortColumns="False">
+                        </DataGrid>
+                        <Grid 
+                            Grid.ColumnSpan="2" 
+                            VerticalAlignment="Bottom">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.75*"></ColumnDefinition>
+                                <ColumnDefinition Width="0.25*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBox
+                                Name="tbSearch"
+                                FontSize="20"
+                                Margin="6,0,2,10"></TextBox>
+                            <Button 
+                                Name="btnSearch"
+                                Grid.Column="1"  
+                                FontSize="20"
+                                Background="#00A2E8"
+                                Foreground="White"
+                                Margin="2,0,2,10" Click="BtnSearch_OnClick">
+                                Найти
+                            </Button>
+                        </Grid>
+                        <Button
+                            Grid.Column="2"
+                            VerticalAlignment="Bottom" 
+                            Margin="2,0,2,10" 
+                            Grid.ColumnSpan="2"
+                            Name="btnBlockUser"
+                            FontSize="20"
+                            Background="#00A2E8"
+                            Foreground="White" Click="BtnBlockUser_OnClick">
+                            Изменить уровень доступа
+                        </Button>
+                    </Grid>
+                </TabItem>
+        </TabControl>
     </Grid>
 </Window>

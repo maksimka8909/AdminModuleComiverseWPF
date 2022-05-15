@@ -102,3 +102,13 @@ C:\Users\Fobos\RiderProjects\AdminModuleComiverseWPF\AdminPanelComiverse\obj\Deb
 C:\Users\Fobos\RiderProjects\AdminModuleComiverseWPF\AdminPanelComiverse\obj\Debug\net6.0-windows\ref\AdminPanelComiverse.dll
 C:\Users\Fobos\RiderProjects\AdminModuleComiverseWPF\AdminPanelComiverse\obj\Debug\net6.0-windows\AdminPanelComiverse.pdb
 C:\Users\Fobos\RiderProjects\AdminModuleComiverseWPF\AdminPanelComiverse\obj\Debug\net6.0-windows\AdminPanelComiverse.genruntimeconfig.cache
+C:\Users\Fobos\RiderProjects\AdminModuleComiverseWPF\AdminPanelComiverse\obj\Debug\net6.0-windows\AddAuthor.g.cs
+C:\Users\Fobos\RiderProjects\AdminModuleComiverseWPF\AdminPanelComiverse\obj\Debug\net6.0-windows\AddComics.g.cs
+C:\Users\Fobos\RiderProjects\AdminModuleComiverseWPF\AdminPanelComiverse\obj\Debug\net6.0-windows\AddEditor.g.cs
+C:\Users\Fobos\RiderProjects\AdminModuleComiverseWPF\AdminPanelComiverse\obj\Debug\net6.0-windows\AddGenre.g.cs
+C:\Users\Fobos\RiderProjects\AdminModuleComiverseWPF\AdminPanelComiverse\obj\Debug\net6.0-windows\AddAuthor.baml
+C:\Users\Fobos\RiderProjects\AdminModuleComiverseWPF\AdminPanelComiverse\obj\Debug\net6.0-windows\AddComics.baml
+C:\Users\Fobos\RiderProjects\AdminModuleComiverseWPF\AdminPanelComiverse\obj\Debug\net6.0-windows\AddEditor.baml
+C:\Users\Fobos\RiderProjects\AdminModuleComiverseWPF\AdminPanelComiverse\obj\Debug\net6.0-windows\AddGenre.baml
+C:\Users\Fobos\RiderProjects\AdminModuleComiverseWPF\AdminPanelComiverse\obj\Debug\net6.0-windows\AddIssue.g.cs
+C:\Users\Fobos\RiderProjects\AdminModuleComiverseWPF\AdminPanelComiverse\obj\Debug\net6.0-windows\AddIssue.baml

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -79,6 +80,11 @@ namespace AdminPanelComiverse
                 }
                 return sb.ToString();
             }
+        }
+
+        private void Window_OnClosing(object? sender, CancelEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

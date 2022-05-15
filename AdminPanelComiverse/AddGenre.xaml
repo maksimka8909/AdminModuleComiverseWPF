@@ -1,15 +1,13 @@
-﻿<Window x:Class="AdminPanelComiverse.MainWindow"
+﻿<Window x:Class="AdminPanelComiverse.AddGenre"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:AdminPanelComiverse"
         mc:Ignorable="d"
-        Title="MainWindow"
-        WindowState="Maximized" Closing="Window_OnClosing">
+        Title="AddGenre" WindowState="Maximized" Closing="Window_OnClosing">
     <Grid Background="Black">
-        <Grid HorizontalAlignment="Center"
-              VerticalAlignment="Center">
+        <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -17,34 +15,28 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            
-            <TextBlock FontSize="20" Foreground="White" Text="Логин"/>
+            <TextBlock FontSize="20" Foreground="White" Text="Наименование "/>
             <TextBox Grid.Row="1" 
-                     Name="tbLogin"
-                     FontSize="20" Width="150"/>
-            <TextBlock Grid.Row="2" FontSize="20" Foreground="White" Text="Пароль"/>
-            <PasswordBox Grid.Row="3" 
-                         Name="pbPassword"
-                         FontSize="20" Width="150"/>
+                     Name="tbGenreName"
+                     FontSize="20" Width="155"/>
             <Grid Grid.Row="4" Margin="0,10,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Button 
-                    Name="btnEnter"
+                    Name="btnCreateAdd"
                     Margin="0,0,10,0"
-                    FontSize="20" Content="Войти"
+                    FontSize="20" Content="Создать"
                     Background="#00A2E8"
-                    Foreground="White" Click="BtnEnterClick" />
+                    Foreground="White" />
                 <Button Grid.Column="1"
-                        Name="btnExit"
+                        Name="btnBack"
                         Margin="10,0,0,0"
-                        Content="Выйти"
+                        Content="Назад"
                         FontSize="20" 
                         Background="#00A2E8"
-                        Foreground="White" 
-                        Click="BtnExitClick" />
+                        Foreground="White" Click="BtnBack_OnClick" />
             </Grid>
         </Grid>
     </Grid>
