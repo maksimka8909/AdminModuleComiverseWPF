@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Text.Json.Nodes;
 using System.Windows;
 using System.Windows.Controls;
@@ -68,19 +69,22 @@ public partial class AddIssue : Window
     {
         if (cbComicsName.SelectedItem == null || tbPath.Text.Trim().Length == 0 || tbIssueName.Text.Trim().Length==0)
         {
-            MessageBox.Show("Поля не заполнены");
+            
         }
         else
         {
             var fileParameter = FileParameter.FromFile(tbPath.Text);
             ComboBoxItem comboBoxItem = (ComboBoxItem)cbComicsName.SelectedItem;
-                var response = apiClient.Post(new RestRequest("download/addfile")
-                    .AddFile("file",fileParameter.GetFile,fileParameter.FileName,fileParameter.ContentType)
-                    .AddParameter("comicsId",Convert.ToInt32(comboBoxItem.Tag))
-                    .AddParameter("issueName",tbIssueName.Text));
-                MessageBox.Show(response.Content);
-
-
+            var request = new RestRequest("download/addfile");
+            request.Method = Method.Post;
+            request.AddHeader("Content-Type","multipart/form-data");
+            request.AddParameter("comicsId",comboBoxItem.Tag.ToString());
+            request.AddParameter("issueName",tbIssueName.Text);
+            request.AddFile("file",fileParameter.GetFile,fileParameter.FileName);
+            var response = apiClient.Execute(request);
+            tbPath.Text = "";
+            tbIssueName.Text = "";
+            MessageBox.Show("Выпуск успешно загружен");
         }
     }
 }
