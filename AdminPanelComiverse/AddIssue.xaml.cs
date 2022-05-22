@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
-using System.Linq;
-using System.Net.Http;
-using System.Text.Json.Nodes;
 using System.Windows;
 using System.Windows.Controls;
 using AdminPanelComiverse.Classes;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Win32;
 using RestSharp;
 
@@ -62,14 +56,13 @@ public partial class AddIssue : Window
         {
             tbPath.Text = openFileDialog.FileName;
         }
-        //Files|*.jpg;*.jpeg;*.png;
     }
 
     private void BtnCreateAdd_OnClick(object sender, RoutedEventArgs e)
     {
         if (cbComicsName.SelectedItem == null || tbPath.Text.Trim().Length == 0 || tbIssueName.Text.Trim().Length==0)
         {
-            
+            MessageBox.Show("Заполните все поля и выберите изображение");
         }
         else
         {
@@ -81,7 +74,7 @@ public partial class AddIssue : Window
             request.AddParameter("comicsId",comboBoxItem.Tag.ToString());
             request.AddParameter("issueName",tbIssueName.Text);
             request.AddFile("file",fileParameter.GetFile,fileParameter.FileName);
-            var response = apiClient.Execute(request);
+            apiClient.Execute(request);
             tbPath.Text = "";
             tbIssueName.Text = "";
             MessageBox.Show("Выпуск успешно загружен");

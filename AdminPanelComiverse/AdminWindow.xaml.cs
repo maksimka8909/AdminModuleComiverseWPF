@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.Net;
 using System.Windows;
 using System.Windows.Controls;
 using AdminPanelComiverse.Classes;
@@ -131,5 +129,45 @@ public partial class AdminWindow : Window
         addIssue.Owner = this;
         addIssue.Show();
         this.Hide();
+    }
+
+    private void BtnUpdate_OnClick(object sender, RoutedEventArgs e)
+    {
+        ComboBoxItem typeItem = (ComboBoxItem)cbList.SelectedItem;
+        switch (typeItem.Content.ToString())
+        {
+            case "Комиксы":
+                MessageBox.Show((dgData.SelectedItem as ComicsClass)?.name);
+                AddComics addComics = new AddComics();
+                addComics.Owner = this;
+                addComics.Show();
+                this.Hide();
+                break;
+            case "Авторы":
+                MessageBox.Show((dgData.SelectedItem as AuthorData)?.Id.ToString());
+                AddAuthor addAuthor = new AddAuthor();
+                addAuthor.Owner = this;
+                addAuthor.Show();
+                this.Hide();
+                break;
+            case "Издатели":
+                MessageBox.Show((dgData.SelectedItem as EditorData)?.Name);
+                AddEditor addEditor = new AddEditor();
+                addEditor.Owner = this;
+                addEditor.Show();
+                this.Hide();
+                break;
+            case "Жанры":
+                MessageBox.Show((dgData.SelectedItem as GenreData)?.name);
+                AddGenre addGenre = new AddGenre();
+                addGenre.Owner = this;
+                addGenre.Show();
+                this.Hide();
+                break;
+            default:
+                MessageBox.Show("Ошибка, выберите категорию, в которую хотите добавить запись");
+                break;
+        }
+
     }
 }

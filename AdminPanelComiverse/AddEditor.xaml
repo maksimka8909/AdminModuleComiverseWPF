@@ -18,12 +18,12 @@
             </Grid.RowDefinitions>
             <TextBlock FontSize="20" Foreground="White" Text="Наименование"/>
             <TextBox Grid.Row="1" 
-                     Name="tbGenreName"
-                     FontSize="20" Width="155"/>
+                     Name="tbEditorName"
+                     FontSize="20" Width="400"/>
             <TextBlock Grid.Row="2"  FontSize="20" Foreground="White" Text="Лого издателя"/>
             <TextBox Grid.Row="3" 
                      Name="tbPath"
-                     FontSize="20" Width="155"
+                     FontSize="20" Width="400"
                      IsReadOnly="True"/>
             <Button Grid.Row="4" 
                 Name="btnFindImage"

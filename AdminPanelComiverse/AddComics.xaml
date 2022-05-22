@@ -27,31 +27,32 @@
             <TextBlock FontSize="20" Foreground="White" Text="Наименование"/>
             <TextBox Grid.Row="1" 
                      Name="tbComicsName"
-                     FontSize="20" Width="155"/>
+                     FontSize="20" Width="400"/>
             <TextBlock Grid.Row="2" FontSize="20" Foreground="White" Text="Описание"/>
             <TextBox Grid.Row="3" 
                      Name="tbComicsDescription"
-                     FontSize="20" Width="155"/>
+                     FontSize="20" Width="400" Height="200"
+                     TextWrapping="Wrap" VerticalScrollBarVisibility="Visible"/>
             <TextBlock Grid.Row="4" FontSize="20" Foreground="White" Text="Издатель"/>
             <ComboBox Grid.Row="5" 
                      Name="cbComicsEditor"
-                     FontSize="20" Width="155"/>
+                     FontSize="20" Width="400"/>
             <TextBlock Grid.Row="6" FontSize="20" Foreground="White" Text="Дата выпуска"/>
             <DatePicker Grid.Row="7" Name="dpComicsIssue" FontSize="20"></DatePicker>
             <TextBlock Grid.Row="8" FontSize="20" Foreground="White" Text="Автор"/>
             <ComboBox Grid.Row="9" 
                      Name="cbComicsAuthor"
-                     FontSize="20" Width="155"/>
+                     FontSize="20" Width="400"/>
             <TextBlock Grid.Row="10"  FontSize="20" Foreground="White" Text="Обложка" />
             <TextBox Grid.Row="11" 
                      Name="tbPath"
-                     FontSize="20" Width="155" IsReadOnly="True"/>
+                     FontSize="20" Width="400" IsReadOnly="True"/>
             <Button Grid.Row="12" 
                     Name="btnFindImage"
                     Margin="0,10,0,0"
-                    FontSize="15" Content="Обзор"
+                    FontSize="20" Content="Обзор"
                     Background="#00A2E8"
-                    Foreground="White" />
+                    Foreground="White" Click="BtnFindImage_OnClick" />
             <Grid Grid.Row="13" Margin="0,10,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -60,14 +61,14 @@
                 <Button 
                     Name="btnCreateAdd"
                     Margin="0,0,10,0"
-                    FontSize="15" Content="Создать"
+                    FontSize="20" Content="Создать"
                     Background="#00A2E8"
-                    Foreground="White" />
+                    Foreground="White" Click="BtnCreateAdd_OnClick" />
                 <Button Grid.Column="1"
                         Name="btnBack"
                         Margin="10,0,0,0"
                         Content="Назад"
-                        FontSize="15" 
+                        FontSize="20" 
                         Background="#00A2E8"
                         Foreground="White" Click="BtnBack_OnClick" />
             </Grid>

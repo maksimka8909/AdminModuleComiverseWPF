@@ -80,8 +80,7 @@
                             Background="#00A2E8"
                             Foreground="White"
                             Margin="5,0,5,10"
-                            VerticalAlignment="Bottom"
-                            Visibility="Hidden">
+                            VerticalAlignment="Bottom" Click="BtnUpdate_OnClick">
                             Изменить
                         </Button>
                         <Button 

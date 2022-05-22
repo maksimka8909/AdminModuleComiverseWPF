@@ -1,12 +1,14 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Windows;
+using AdminPanelComiverse.Classes;
 using Microsoft.Win32;
+using RestSharp;
 
 namespace AdminPanelComiverse;
 
 public partial class AddEditor : Window
 {
+    private RestClient apiClient = ApiBuilder.GetInstance();
     public AddEditor()
     {
         InitializeComponent();
@@ -36,13 +38,25 @@ public partial class AddEditor : Window
 
     private void BtnCreateAdd_OnClick(object sender, RoutedEventArgs e)
     {
-        if (tbPath.Text.Trim().Length == 0 || tbGenreName.Text.Trim().Length == 0)
+        if (tbPath.Text.Trim().Length == 0 || tbEditorName.Text.Trim().Length == 0)
         {
             MessageBox.Show("Заполните все поля и выберите изображение");
         }
         else
         {
-            
+            var response = apiClient.Post<MassageClass>(new RestRequest("Editor")
+                .AddParameter("name",tbEditorName.Text)
+                .AddFile("logo",tbPath.Text));
+            if (response.key == "EXIST")
+            {
+                MessageBox.Show("Данный издатель уже внесен в базу данных");
+            }
+            else
+            {
+                tbEditorName.Text = "";
+                tbPath.Text = "";
+                MessageBox.Show("Издатель успешно внесен в базу данных");
+            }
         }
     }
 }
