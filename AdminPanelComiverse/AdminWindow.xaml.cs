@@ -134,40 +134,61 @@ public partial class AdminWindow : Window
     private void BtnUpdate_OnClick(object sender, RoutedEventArgs e)
     {
         ComboBoxItem typeItem = (ComboBoxItem)cbList.SelectedItem;
-        switch (typeItem.Content.ToString())
+        if (dgData.SelectedItem == null)
         {
-            case "Комиксы":
-                MessageBox.Show((dgData.SelectedItem as ComicsClass)?.name);
-                AddComics addComics = new AddComics();
-                addComics.Owner = this;
-                addComics.Show();
-                this.Hide();
-                break;
-            case "Авторы":
-                MessageBox.Show((dgData.SelectedItem as AuthorData)?.Id.ToString());
-                AddAuthor addAuthor = new AddAuthor();
-                addAuthor.Owner = this;
-                addAuthor.Show();
-                this.Hide();
-                break;
-            case "Издатели":
-                MessageBox.Show((dgData.SelectedItem as EditorData)?.Name);
-                AddEditor addEditor = new AddEditor();
-                addEditor.Owner = this;
-                addEditor.Show();
-                this.Hide();
-                break;
-            case "Жанры":
-                MessageBox.Show((dgData.SelectedItem as GenreData)?.name);
-                AddGenre addGenre = new AddGenre();
-                addGenre.Owner = this;
-                addGenre.Show();
-                this.Hide();
-                break;
-            default:
-                MessageBox.Show("Ошибка, выберите категорию, в которую хотите добавить запись");
-                break;
+            MessageBox.Show("Ошибка, выберите запись, которую хотите изменить");
         }
+        else
+        {
+            switch (typeItem.Content.ToString())
+            {
+                case "Комиксы":
+                    MessageBox.Show((dgData.SelectedItem as ComicsClass)?.name);
+                    AddComics addComics = new AddComics();
+                    addComics.btnCreateAdd.Content = "Изменить";
+                    addComics.Owner = this;
+                    addComics.Show();
+                    this.Hide();
+                    break;
+                case "Авторы":
+                    MessageBox.Show((dgData.SelectedItem as AuthorData)?.Id.ToString());
+                    AddAuthor addAuthor = new AddAuthor();
+                    addAuthor.Owner = this;
+                    addAuthor.btnCreateAdd.Content = "Изменить";
+                    addAuthor.Show();
+                    this.Hide();
+                    break;
+                case "Издатели":
+                    AddEditor addEditor = new AddEditor();
+                    addEditor.tbEditorName.Tag = (dgData.SelectedItem as EditorData)?.Id;
+                    addEditor.tbEditorName.Text = (dgData.SelectedItem as EditorData)?.Name;
+                    addEditor.btnCreateAdd.Content = "Изменить";
+                    addEditor.lLogo.Visibility = Visibility.Hidden;
+                    addEditor.tbPath.Visibility = Visibility.Hidden;
+                    addEditor.btnFindImage.Visibility = Visibility.Hidden;
+                    addEditor.Owner = this;
+                    addEditor.Show();
+                    this.Hide();
+                    break;
+                case "Жанры":
+                    MessageBox.Show((dgData.SelectedItem as GenreData)?.name);
+                    AddGenre addGenre = new AddGenre();
+                    addGenre.btnCreateAdd.Content = "Изменить";
+                    addGenre.tbGenreName.Text = (dgData.SelectedItem as GenreData)?.name;
+                    addGenre.tbGenreName.Tag = (dgData.SelectedItem as GenreData)?.id;
+                    addGenre.Owner = this;
+                    addGenre.Show();
+                    this.Hide();
+                    break;
+                case null:
+                    MessageBox.Show("Ошибка, выберите категорию, в которую хотите добавить запись");
+                    break;
+                default:
+                    MessageBox.Show("Ошибка, выберите категорию, в которую хотите добавить запись");
+                    break;
+            }
+        }
+        
 
     }
 }

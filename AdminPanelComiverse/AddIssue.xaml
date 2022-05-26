@@ -8,7 +8,13 @@
         Title="AddIssue" WindowState="Maximized" Closing="Window_OnClosing">
     <Grid Background="Black">
         <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -21,7 +27,7 @@
             <TextBlock FontSize="20" Foreground="White" Text="Комикс"/>
             <ComboBox Grid.Row="1" 
                      Name="cbComicsName"
-                     FontSize="20" Width="400"/>
+                     FontSize="20" Width="400" SelectionChanged="CbComicsName_OnSelectionChanged" />
             <TextBlock Grid.Row="2" FontSize="20" Foreground="White" Text="Наименование"/>
             <TextBox Grid.Row="3" 
                      Name="tbIssueName"
@@ -31,13 +37,17 @@
                      Name="tbPath"
                      FontSize="20" Width="400"
                      IsReadOnly="True"/>
-            <Button Grid.Row="6" 
+            <TextBlock Grid.Row="6" FontSize="20" Foreground="White" Text="Номер выпуска"/>
+            <TextBox Grid.Row="7" 
+                     Name="tbIssueNumber"
+                     FontSize="20" Width="400" PreviewTextInput="TbIssueNumber_OnPreviewTextInput" />
+            <Button Grid.Row="8" 
                     Name="btnFindImage"
                     Margin="0,10,0,0"
                     FontSize="20" Content="Обзор"
                     Background="#00A2E8"
                     Foreground="White" Click="BtnFindImage_OnClick" />
-            <Grid Grid.Row="7" Margin="0,10,0,0">
+            <Grid Grid.Row="9" Margin="0,10,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -56,6 +66,20 @@
                         Background="#00A2E8"
                         Foreground="White" Click="BtnBack_OnClick" />
             </Grid>
+            <DataGrid Grid.Column="1"
+                      Name="dgIssues"
+                      Grid.Row="0" 
+                      Grid.RowSpan="10"
+                      Margin="10,0,10,0"
+                      IsReadOnly="True"
+                      SelectionMode="Single"
+                      HorizontalAlignment="Stretch"
+                      ColumnWidth="Auto"
+                      CanUserAddRows="False"
+                      CanUserReorderColumns="False"
+                      CanUserDeleteRows="False"
+                      CanUserSortColumns="False">
+            </DataGrid>
         </Grid>
     </Grid>
 </Window>

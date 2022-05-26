@@ -13,6 +13,7 @@ namespace AdminPanelComiverse;
 public partial class AddComics : Window
 {
     private RestClient apiClient = ApiBuilder.GetInstance();
+    public bool isEdit { get; set; }
     public AddComics()
     {
         InitializeComponent();

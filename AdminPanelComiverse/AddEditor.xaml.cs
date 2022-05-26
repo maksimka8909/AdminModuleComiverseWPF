@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Windows;
 using AdminPanelComiverse.Classes;
 using Microsoft.Win32;
@@ -38,25 +39,49 @@ public partial class AddEditor : Window
 
     private void BtnCreateAdd_OnClick(object sender, RoutedEventArgs e)
     {
-        if (tbPath.Text.Trim().Length == 0 || tbEditorName.Text.Trim().Length == 0)
+        if (btnCreateAdd.Content != "Изменить")
         {
-            MessageBox.Show("Заполните все поля и выберите изображение");
-        }
-        else
-        {
-            var response = apiClient.Post<MassageClass>(new RestRequest("Editor")
-                .AddParameter("name",tbEditorName.Text)
-                .AddFile("logo",tbPath.Text));
-            if (response.key == "EXIST")
+            if (tbPath.Text.Trim().Length == 0 || tbEditorName.Text.Trim().Length == 0)
             {
-                MessageBox.Show("Данный издатель уже внесен в базу данных");
+                MessageBox.Show("Заполните все поля и выберите изображение");
             }
             else
             {
-                tbEditorName.Text = "";
-                tbPath.Text = "";
-                MessageBox.Show("Издатель успешно внесен в базу данных");
+                var response = apiClient.Post<MassageClass>(new RestRequest("Editor")
+                    .AddParameter("name", tbEditorName.Text)
+                    .AddFile("logo", tbPath.Text));
+                if (response.key == "EXIST")
+                {
+                    MessageBox.Show("Данный издатель уже внесен в базу данных");
+                }
+                else
+                {
+                    tbEditorName.Text = "";
+                    tbPath.Text = "";
+                    MessageBox.Show("Издатель успешно внесен в базу данных");
+                }
             }
         }
+        else
+        {
+            if (tbEditorName.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Заполните поле");
+            }
+            else
+            {
+                var response1 = apiClient.Post<MassageClass>(new RestRequest("editor/updateEditor")
+                    .AddBody(new {id = Convert.ToInt32(tbEditorName.Tag), name = tbEditorName.Name}));
+                if (response1.key == "EXIST")
+                {
+                    MessageBox.Show("Данный издатель уже внесен в базу данных");
+                }
+                else
+                {
+                    MessageBox.Show(response1.key);
+                }
+            }
+        }
+        
     }
 }

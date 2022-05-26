@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Windows;
 using AdminPanelComiverse.Classes;
 using ComicsApi.Models;
@@ -34,16 +35,32 @@ public partial class AddGenre : Window
         }
         else
         {
-            var response = apiClient.Post<MassageClass>(new RestRequest("genre")
-                .AddBody( new Genre(){Name = tbGenreName.Text}));
-            if (response.key == "EXIST")
+            if (btnCreateAdd.Content == "Создать")
             {
-                MessageBox.Show("Данный жанр уже внесен в базу данных");
+                var response = apiClient.Post<MassageClass>(new RestRequest("genre")
+                    .AddBody( new Genre(){Name = tbGenreName.Text}));
+                if (response.key == "EXIST")
+                {
+                    MessageBox.Show("Данный жанр уже внесен в базу данных");
+                }
+                else
+                {
+                    tbGenreName.Text = "";
+                    MessageBox.Show("Жанр успешно внесен в базу данных");
+                } 
             }
             else
             {
-                tbGenreName.Text = "";
-                MessageBox.Show("Жанр успешно внесен в базу данных");
+                var response = apiClient.Post<MassageClass>(new RestRequest("genre/update")
+                    .AddBody( new Genre(){Id = Convert.ToInt32(tbGenreName.Tag),Name = tbGenreName.Text}));
+                if (response.key == "EXIST")
+                {
+                    MessageBox.Show("Данный жанр уже внесен в базу данных");
+                }
+                else
+                {
+                    MessageBox.Show("Жанр успешно обновлен");
+                } 
             }
         }
     }

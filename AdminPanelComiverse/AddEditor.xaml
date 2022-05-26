@@ -20,7 +20,7 @@
             <TextBox Grid.Row="1" 
                      Name="tbEditorName"
                      FontSize="20" Width="400"/>
-            <TextBlock Grid.Row="2"  FontSize="20" Foreground="White" Text="Лого издателя"/>
+            <TextBlock Name="lLogo" Grid.Row="2"  FontSize="20" Foreground="White" Text="Лого издателя"/>
             <TextBox Grid.Row="3" 
                      Name="tbPath"
                      FontSize="20" Width="400"
