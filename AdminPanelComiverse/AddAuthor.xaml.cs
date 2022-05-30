@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Windows;
 using AdminPanelComiverse.Classes;
 using Microsoft.Win32;
@@ -38,36 +39,73 @@ public partial class AddAuthor : Window
     
     private void BtnCreateAdd_OnClick(object sender, RoutedEventArgs e)
     {
-        if (tbPath.Text.Trim().Length == 0 
-            || tbAuthorDescription.Text.Trim().Length == 0
-            || tbAuthorName.Text.Trim().Length == 0
-            || tbAuthorSurname.Text.Trim().Length == 0
-            || dpAuthorBirthday.Text.Trim().Length == 0)
+        if (btnCreateAdd.Content == "Создать")
         {
-            MessageBox.Show("Заполните все поля и выберите изображение");
-        }
-        else
-        {
-            var response = apiClient.Post<MassageClass>(new RestRequest("Author")
-                .AddParameter("name",tbAuthorName.Text)
-                .AddParameter("surname",tbAuthorSurname.Text)
-                .AddParameter("middleName",tbAuthorMiddlename.Text)
-                .AddParameter("description",tbAuthorDescription.Text)
-                .AddParameter("birthday",dpAuthorBirthday.Text)
-                .AddFile("image",tbPath.Text));
-            if (response.key == "EXIST")
+            if (tbPath.Text.Trim().Length == 0
+                || tbAuthorDescription.Text.Trim().Length == 0
+                || tbAuthorName.Text.Trim().Length == 0
+                || tbAuthorSurname.Text.Trim().Length == 0
+                || dpAuthorBirthday.Text.Trim().Length == 0)
             {
-                MessageBox.Show("Данный автор уже внесен в базу данных");
+                MessageBox.Show("Заполните все поля и выберите изображение");
             }
             else
             {
-                tbAuthorName.Text = "";
-                tbAuthorSurname.Text = "";
-                tbAuthorMiddlename.Text = "";
-                tbAuthorDescription.Text = "";
-                dpAuthorBirthday.Text = "";
-                tbPath.Text = "";
-                MessageBox.Show("Автор успешно внесен в базу данных");
+                var response = apiClient.Post<MassageClass>(new RestRequest("Author")
+                    .AddParameter("name", tbAuthorName.Text)
+                    .AddParameter("surname", tbAuthorSurname.Text)
+                    .AddParameter("middleName", tbAuthorMiddlename.Text)
+                    .AddParameter("description", tbAuthorDescription.Text)
+                    .AddParameter("birthday", dpAuthorBirthday.Text)
+                    .AddFile("image", tbPath.Text));
+                if (response.key == "EXIST")
+                {
+                    MessageBox.Show("Данный автор уже внесен в базу данных");
+                }
+                else
+                {
+                    tbAuthorName.Text = "";
+                    tbAuthorSurname.Text = "";
+                    tbAuthorMiddlename.Text = "";
+                    tbAuthorDescription.Text = "";
+                    dpAuthorBirthday.Text = "";
+                    tbPath.Text = "";
+                    MessageBox.Show("Автор успешно внесен в базу данных");
+                }
+            }
+        }
+        else
+        {
+            if (btnCreateAdd.Content == "Изменить")
+            {
+                if (tbAuthorDescription.Text.Trim().Length == 0
+                    || tbAuthorName.Text.Trim().Length == 0
+                    || tbAuthorSurname.Text.Trim().Length == 0
+                    || dpAuthorBirthday.Text.Trim().Length == 0)
+                {
+                    MessageBox.Show("Заполните все поля");
+                }
+                else
+                {
+                    var response = apiClient.Post<MassageClass>(new RestRequest("Author/update")
+                        .AddBody(new AuthorClass()
+                        {
+                            Id = Convert.ToInt32(tbAuthorName.Tag), Name = tbAuthorName.Text,
+                            Surname = tbAuthorSurname.Text, MiddleName = tbAuthorMiddlename.Text,
+                            Description = tbAuthorDescription.Text, Birthday = dpAuthorBirthday.Text
+                        }));
+                    if (response.key == "EXIST")
+                    {
+                        MessageBox.Show("Данный автор уже внесен в базу данных");
+                    }
+                    else
+                    {
+                        if (response.key == "OK")
+                        {
+                            MessageBox.Show("Данные об автору успешно обновлены");
+                        }
+                    }
+                }
             }
         }
     }

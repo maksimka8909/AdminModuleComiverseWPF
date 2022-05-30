@@ -143,17 +143,35 @@ public partial class AdminWindow : Window
             switch (typeItem.Content.ToString())
             {
                 case "Комиксы":
-                    MessageBox.Show((dgData.SelectedItem as ComicsClass)?.name);
+                    var response1 = apiClient.Get<ComicsView>(new RestRequest($"Comic/{(dgData.SelectedItem as ComicsClass)?.id}"));
                     AddComics addComics = new AddComics();
+                    addComics.tbComicsDescription.Text = response1.description;
+                    addComics.tbComicsName.Text = response1.name;
+                    addComics.tbComicsName.Tag = response1.id;
+                    addComics.author = response1.author;
+                    addComics.editor = response1.editor;
+                    addComics.dpComicsIssue.Text = response1.date;
+                    addComics.lCover.Visibility = Visibility.Hidden;
+                    addComics.tbPath.Visibility = Visibility.Hidden;
+                    addComics.btnFindImage.Visibility = Visibility.Hidden;
                     addComics.btnCreateAdd.Content = "Изменить";
                     addComics.Owner = this;
                     addComics.Show();
                     this.Hide();
                     break;
                 case "Авторы":
-                    MessageBox.Show((dgData.SelectedItem as AuthorData)?.Id.ToString());
+                    var response = apiClient.Get<AuthorClass>(new RestRequest($"Author/{(dgData.SelectedItem as AuthorData).Id}"));
                     AddAuthor addAuthor = new AddAuthor();
                     addAuthor.Owner = this;
+                    addAuthor.tbAuthorName.Tag = response.Id;
+                    addAuthor.tbAuthorName.Text = response.Name;
+                    addAuthor.tbAuthorSurname.Text = response.Surname;
+                    addAuthor.tbAuthorMiddlename.Text = response.MiddleName;
+                    addAuthor.tbAuthorDescription.Text = response.Description;
+                    addAuthor.dpAuthorBirthday.Text = response.Birthday;
+                    addAuthor.lPhoto.Visibility = Visibility.Hidden;
+                    addAuthor.btnFindImage.Visibility = Visibility.Hidden;
+                    addAuthor.tbPath.Visibility = Visibility.Hidden;
                     addAuthor.btnCreateAdd.Content = "Изменить";
                     addAuthor.Show();
                     this.Hide();

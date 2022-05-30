@@ -5,8 +5,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:AdminPanelComiverse"
         mc:Ignorable="d"
-        Title="AddComics" WindowState="Maximized" Closing="Window_OnClosing">
-    <Grid Background="Black">
+        Title="Работа с комиксом" WindowState="Maximized" Closing="Window_OnClosing" Loaded="Window_OnLoaded"
+        MinHeight="800" MinWidth="600">
+    <Grid Background="#454545">
         <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -24,30 +25,46 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock FontSize="20" Foreground="White" Text="Наименование"/>
+            <TextBlock FontSize="20" FontFamily="Comic Sans MS" Foreground="White" Text="Наименование"/>
             <TextBox Grid.Row="1" 
+                     FontFamily="Comic Sans MS"
                      Name="tbComicsName"
                      FontSize="20" Width="400"/>
-            <TextBlock Grid.Row="2" FontSize="20" Foreground="White" Text="Описание"/>
+            <TextBlock Grid.Row="2" FontSize="20" Foreground="White" FontFamily="Comic Sans MS" Text="Описание"/>
             <TextBox Grid.Row="3" 
+                     FontFamily="Comic Sans MS"
                      Name="tbComicsDescription"
                      FontSize="20" Width="400" Height="200"
                      TextWrapping="Wrap" VerticalScrollBarVisibility="Visible"/>
-            <TextBlock Grid.Row="4" FontSize="20" Foreground="White" Text="Издатель"/>
-            <ComboBox Grid.Row="5" 
-                     Name="cbComicsEditor"
-                     FontSize="20" Width="400"/>
-            <TextBlock Grid.Row="6" FontSize="20" Foreground="White" Text="Дата выпуска"/>
-            <DatePicker Grid.Row="7" Name="dpComicsIssue" FontSize="20"></DatePicker>
-            <TextBlock Grid.Row="8" FontSize="20" Foreground="White" Text="Автор"/>
+            <TextBlock Grid.Row="4" FontSize="20" 
+                       FontFamily="Comic Sans MS"
+                       Foreground="White" Text="Издатель"/>
+            <ComboBox Grid.Row="5"
+                      FontFamily="Comic Sans MS"
+                      Name="cbComicsEditor"
+                      FontSize="20" Width="400" SelectedValuePath="Content"/>
+            <TextBlock Grid.Row="6" 
+                       FontFamily="Comic Sans MS"
+                       FontSize="20" Foreground="White" Text="Дата выпуска"/>
+            <DatePicker Grid.Row="7" 
+                        FontFamily="Comic Sans MS"
+                        Name="dpComicsIssue" FontSize="20"></DatePicker>
+            <TextBlock Grid.Row="8" 
+                       FontFamily="Comic Sans MS"
+                       FontSize="20" Foreground="White" Text="Автор"/>
             <ComboBox Grid.Row="9" 
-                     Name="cbComicsAuthor"
-                     FontSize="20" Width="400"/>
-            <TextBlock Grid.Row="10"  FontSize="20" Foreground="White" Text="Обложка" />
-            <TextBox Grid.Row="11" 
+                      FontFamily="Comic Sans MS"
+                      Name="cbComicsAuthor"
+                      FontSize="20" Width="400" SelectedValuePath="Content"/>
+            <TextBlock Grid.Row="10" Name="lCover"  
+                       FontFamily="Comic Sans MS"
+                       FontSize="20" Foreground="White" Text="Обложка" />
+            <TextBox Grid.Row="11"
+                     FontFamily="Comic Sans MS"
                      Name="tbPath"
                      FontSize="20" Width="400" IsReadOnly="True"/>
-            <Button Grid.Row="12" 
+            <Button Grid.Row="12"
+                    FontFamily="Comic Sans MS"
                     Name="btnFindImage"
                     Margin="0,10,0,0"
                     FontSize="20" Content="Обзор"
@@ -60,11 +77,13 @@
                 </Grid.ColumnDefinitions>
                 <Button 
                     Name="btnCreateAdd"
+                    FontFamily="Comic Sans MS"
                     Margin="0,0,10,0"
                     FontSize="20" Content="Создать"
                     Background="#00A2E8"
                     Foreground="White" Click="BtnCreateAdd_OnClick" />
                 <Button Grid.Column="1"
+                        FontFamily="Comic Sans MS"
                         Name="btnBack"
                         Margin="10,0,0,0"
                         Content="Назад"

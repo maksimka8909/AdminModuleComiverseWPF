@@ -5,6 +5,7 @@
         <TargetFramework>net6.0-windows</TargetFramework>
         <Nullable>enable</Nullable>
         <UseWPF>true</UseWPF>
+        <ApplicationIcon>Resourses/Iconsmind-Outline-Book.ico</ApplicationIcon>
     </PropertyGroup>
 
     <ItemGroup>
@@ -21,6 +22,11 @@
       <Page Update="MainWindow.xaml">
         <Generator>MSBuild:Compile</Generator>
       </Page>
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Resourses\LOGO.png" />
+      <Resource Include="Resourses\LOGO.png" />
     </ItemGroup>
 
 </Project>

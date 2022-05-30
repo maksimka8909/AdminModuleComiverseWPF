@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Windows;
 using AdminPanelComiverse.Classes;
+using ComicsApi.Classes;
 using Microsoft.Win32;
 using RestSharp;
 
@@ -71,14 +72,17 @@ public partial class AddEditor : Window
             else
             {
                 var response1 = apiClient.Post<MassageClass>(new RestRequest("editor/updateEditor")
-                    .AddBody(new {id = Convert.ToInt32(tbEditorName.Tag), name = tbEditorName.Name}));
+                    .AddBody(new EditorData(){Id = Convert.ToInt32(tbEditorName.Tag), Name = tbEditorName.Text}));
                 if (response1.key == "EXIST")
                 {
                     MessageBox.Show("Данный издатель уже внесен в базу данных");
                 }
                 else
                 {
-                    MessageBox.Show(response1.key);
+                    if (response1.key == "OK")
+                    {
+                        MessageBox.Show("Данные об издателе успешно изменены");
+                    }
                 }
             }
         }

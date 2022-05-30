@@ -6,16 +6,17 @@
         xmlns:local="clr-namespace:AdminPanelComiverse"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="AdminWindow" WindowState="Maximized" Closing="Window_OnClosing">
-    <Grid Background="White">
-        <TabControl Background="Black">
+        Title="Панель администратора" WindowState="Maximized" Closing="Window_OnClosing"
+        MinHeight="800" MinWidth="600">
+    <Grid Background="Black">
+        <TabControl Background="#454545">
                 <TabItem Name="tiComics" Background="#00A2E8" IsSelected="True" >
                     <TabItem.Header >
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Margin="3">Комиксы</TextBlock>
+                            <TextBlock  FontFamily="Comic Sans MS" FontSize="15">Комиксы</TextBlock>
                         </StackPanel>
                     </TabItem.Header>
-                    <Grid>
+                    <Grid >
                         <Grid.RowDefinitions>
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
@@ -30,8 +31,10 @@
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <DataGrid Grid.Row="1" 
-                                  Grid.ColumnSpan="4"
+                        <DataGrid 
+                                  FontSize="20"
+                                  Grid.Row="1" 
+                                  Grid.ColumnSpan="5"
                                   Grid.RowSpan="4"
                                   Name="dgData"
                                   Margin="5"
@@ -42,18 +45,22 @@
                                   CanUserAddRows="False"
                                   CanUserReorderColumns="False"
                                   CanUserDeleteRows="False"
+                                  FontFamily="Comic Sans MS"
                                   CanUserSortColumns="False"></DataGrid>
-                        <Button Grid.Row="4" 
+                        
+                        <Button Grid.Row="0" 
                                 Grid.Column="4"
-                                VerticalAlignment="Center"
+                                VerticalAlignment="Bottom"
                                 Name="btnExit"
                                 FontSize="20"
+                                FontFamily="Comic Sans MS"
                                 Background="#00A2E8"
                                 Foreground="White"
-                                Margin="2,0,2,10" Click="BtnExit_OnClick">
+                                Margin="2,5,2,10" Click="BtnExit_OnClick">
                             Выйти
                         </Button>
                         <ComboBox
+                            FontFamily="Comic Sans MS"
                             Margin="10"
                             VerticalAlignment="Bottom"
                             Name="cbList"
@@ -64,6 +71,7 @@
                             <ComboBoxItem Tag="genre" Content="Жанры"></ComboBoxItem>  
                         </ComboBox>
                         <Button 
+                            FontFamily="Comic Sans MS"
                             Grid.Column="1" 
                             Name="btnAdd"
                             FontSize="20"
@@ -74,6 +82,7 @@
                             Добавить
                         </Button>
                         <Button 
+                            FontFamily="Comic Sans MS"
                             Grid.Column="2" 
                             Name="btnUpdate"
                             FontSize="20"
@@ -84,6 +93,7 @@
                             Изменить
                         </Button>
                         <Button 
+                            FontFamily="Comic Sans MS"
                             Grid.Column="3" 
                             Name="btnPullIssue"
                             FontSize="20"
@@ -98,7 +108,7 @@
                 <TabItem Name="tiUser" Background="#00A2E8">
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Margin="3">
+                            <TextBlock FontSize="15" FontFamily="Comic Sans MS">
                                 Пользователи
                             </TextBlock>
                         </StackPanel>
@@ -119,6 +129,8 @@
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <DataGrid
+                            FontSize="20"
+                            FontFamily="Comic Sans MS"
                             Name="dgUsers"
                             Grid.Row="1" 
                             Grid.ColumnSpan="5" 
@@ -141,10 +153,12 @@
                                 <ColumnDefinition Width="0.25*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <TextBox
+                                FontFamily="Comic Sans MS"
                                 Name="tbSearch"
                                 FontSize="20"
                                 Margin="6,0,2,10"></TextBox>
                             <Button 
+                                FontFamily="Comic Sans MS"
                                 Name="btnSearch"
                                 Grid.Column="1"  
                                 FontSize="20"
@@ -155,6 +169,7 @@
                             </Button>
                         </Grid>
                         <Button
+                            FontFamily="Comic Sans MS"
                             Grid.Column="2"
                             VerticalAlignment="Bottom" 
                             Margin="2,0,2,10" 
