@@ -89,6 +89,7 @@
                       SelectionMode="Single"
                       HorizontalAlignment="Stretch"
                       ColumnWidth="Auto"
+                      FontSize="20"
                       CanUserAddRows="False"
                       CanUserReorderColumns="False"
                       CanUserDeleteRows="False"
