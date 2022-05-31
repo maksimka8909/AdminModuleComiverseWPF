@@ -12,16 +12,28 @@ namespace AdminPanelComiverse
     {
         private RestClient apiClient = ApiBuilder.GetInstance();
         
+        /// <summary>
+        /// инициализация окна MainWindow
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
         }
-
+        
+        /// <summary>
+        /// Обработчик нажатия кнопки выхода из приложения
+        /// </summary>
+        /// <param name="sender">отправитель</param>
+        /// <param name="e">событие</param>
         private void BtnExitClick(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
-
+        /// <summary>
+        /// Обработчик события кнопки входа и алгоритм дальнейшей авторизации
+        /// </summary>
+        /// <param name="sender">Отправитель</param>
+        /// <param name="e">событие</param>
         private void BtnEnterClick(object sender, RoutedEventArgs e)
         {
             UserAuthData userAuthData = new UserAuthData()
@@ -49,15 +61,17 @@ namespace AdminPanelComiverse
                 }
             }
         }
+        /// <summary>
+        /// Обрабатывает строку в кодировку MD5
+        /// </summary>
+        /// <param name="input">строка, которую необходимо захэшировать</param>
+        /// <returns>захэшированная строка </returns>
         public static string CreateMD5(string input)
         {
-            // Use input string to calculate MD5 hash
             using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
             {
                 byte[] inputBytes = Encoding.ASCII.GetBytes(input);
                 byte[] hashBytes = md5.ComputeHash(inputBytes);
-
-                // Convert the byte array to hexadecimal string
                 StringBuilder sb = new StringBuilder();
                 for (int i = 0; i < hashBytes.Length; i++)
                 {
@@ -66,7 +80,11 @@ namespace AdminPanelComiverse
                 return sb.ToString();
             }
         }
-
+        /// <summary>
+        /// Обработчик закрытия окна
+        /// </summary>
+        /// <param name="sender">Отправитель</param>
+        /// <param name="e">Событие</param>
         private void Window_OnClosing(object? sender, CancelEventArgs e)
         {
             Application.Current.Shutdown();

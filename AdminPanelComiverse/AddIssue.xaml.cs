@@ -13,6 +13,9 @@ namespace AdminPanelComiverse.Models;
 public partial class AddIssue : Window
 {
     private RestClient apiClient = ApiBuilder.GetInstance();
+    /// <summary>
+    /// Инициализация окна AddIssue 
+    /// </summary>
     public AddIssue()
     {
         InitializeComponent();
@@ -37,19 +40,31 @@ public partial class AddIssue : Window
             }
         }
     }
-
+    /// <summary>
+    /// Обработчик нажатия кнопки выхода на предыдущее окно
+    /// </summary>
+    /// <param name="sender">Отправитель</param>
+    /// <param name="e">Событие</param>
     private void BtnBack_OnClick(object sender, RoutedEventArgs e)
     {
         this.Owner.Show();
         Hide();
     }
-
+    /// <summary>
+    /// Обработчик закрытия окна
+    /// </summary>
+    /// <param name="sender">Отправитель</param>
+    /// <param name="e">Событие</param>
     private void Window_OnClosing(object? sender, CancelEventArgs e)
     {
         this.Owner.Show();
         Hide();
     }
-
+    /// <summary>
+    /// Обработчик нажатия кнопки поиска архива выпуска .cbr
+    /// </summary>
+    /// <param name="sender">Отправитель</param>
+    /// <param name="e">Событие</param>
     private void BtnFindImage_OnClick(object sender, RoutedEventArgs e)
     {
         OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -59,7 +74,11 @@ public partial class AddIssue : Window
             tbPath.Text = openFileDialog.FileName;
         }
     }
-
+    /// <summary>
+    /// Обработчик кнопки добавления/изменения объекта типа выпуск
+    /// </summary>
+    /// <param name="sender">Отправитель</param>
+    /// <param name="e">Событие</param>
     private void BtnCreateAdd_OnClick(object sender, RoutedEventArgs e)
     {
         if (cbComicsName.SelectedItem == null || tbPath.Text.Trim().Length == 0 || tbIssueName.Text.Trim().Length==0 || tbIssueNumber.Text.Trim().Length == 0)
@@ -104,7 +123,11 @@ public partial class AddIssue : Window
             
         }
     }
-
+    /// <summary>
+    /// Обработчик события внесения текста в элемент TextBox
+    /// </summary>
+    /// <param name="sender">Отправитель</param>
+    /// <param name="e">Событие</param>
     private void TbIssueNumber_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
     {
         if (!Char.IsDigit(e.Text, 0))
@@ -112,7 +135,11 @@ public partial class AddIssue : Window
             e.Handled = true;
         }
     }
-
+    /// <summary>
+    /// Обработчик события изменения выбранного элемента ComboBox
+    /// </summary>
+    /// <param name="sender">Отправитель</param>
+    /// <param name="e">Событие</param>
     private void CbComicsName_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         dgIssues.Visibility = Visibility.Visible;

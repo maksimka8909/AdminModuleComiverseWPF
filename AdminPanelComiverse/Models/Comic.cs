@@ -13,12 +13,7 @@ namespace ComicsApi.Models
     {
         public Comic()
         {
-            ComicsReadByUsers = new HashSet<ComicsReadByUser>();
-            ComicsScores = new HashSet<ComicsScore>();
-            Comments = new HashSet<Comment>();
-            ListOfComicsGenres = new HashSet<ListOfComicsGenre>();
             ListOfIssues = new HashSet<ListOfIssue>();
-            TrackedComics = new HashSet<TrackedComic>();
         }
 
         [Key]
@@ -47,17 +42,7 @@ namespace ComicsApi.Models
         [ForeignKey(nameof(IdEditor))]
         [InverseProperty(nameof(Editor.Comics))]
         public virtual Editor? IdEditorNavigation { get; set; }
-        [InverseProperty(nameof(ComicsReadByUser.IdComicsNavigation))]
-        public virtual ICollection<ComicsReadByUser> ComicsReadByUsers { get; set; }
-        [InverseProperty(nameof(ComicsScore.IdComicsNavigation))]
-        public virtual ICollection<ComicsScore> ComicsScores { get; set; }
-        [InverseProperty(nameof(Comment.IdComicsNavigation))]
-        public virtual ICollection<Comment> Comments { get; set; }
-        [InverseProperty(nameof(ListOfComicsGenre.IdComicsNavigation))]
-        public virtual ICollection<ListOfComicsGenre> ListOfComicsGenres { get; set; }
         [InverseProperty(nameof(ListOfIssue.IdComicsNavigation))]
         public virtual ICollection<ListOfIssue> ListOfIssues { get; set; }
-        [InverseProperty(nameof(TrackedComic.IdComicsNavigation))]
-        public virtual ICollection<TrackedComic> TrackedComics { get; set; }
     }
 }

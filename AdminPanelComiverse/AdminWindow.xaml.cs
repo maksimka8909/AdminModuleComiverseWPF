@@ -12,18 +12,29 @@ namespace AdminPanelComiverse;
 public partial class AdminWindow : Window
 {
     private RestClient apiClient = ApiBuilder.GetInstance();
+    /// <summary>
+    /// Инициализация окна AdminWindow
+    /// </summary>
     public AdminWindow()        
     {
         InitializeComponent();
         var response = apiClient.Get<List<UserClass>>(new RestRequest("User"));
         dgUsers.ItemsSource = response;
     }
-
+    /// <summary>
+    /// Обработчик события закрытия окна
+    /// </summary>
+    /// <param name="sender">Отправитель</param>
+    /// <param name="e">Событие</param>
     private void Window_OnClosing(object? sender, CancelEventArgs e)
     {
         Application.Current.Shutdown();
     }
-    
+    /// <summary>
+    /// Обработчик нажатия кнопки блокировки пользователя
+    /// </summary>
+    /// <param name="sender">Отправитель</param>
+    /// <param name="e">Событие</param>
     private void BtnBlockUser_OnClick(object sender, RoutedEventArgs e)
     {
         if (dgUsers.SelectedItem == null)
@@ -38,7 +49,11 @@ public partial class AdminWindow : Window
             dgUsers.ItemsSource = response;
         }
     }
-
+    /// <summary>
+    /// Обработчик нажатия кнопки поиска
+    /// </summary>
+    /// <param name="sender">Отправитель</param>
+    /// <param name="e">Событие</param>
     private void BtnSearch_OnClick(object sender, RoutedEventArgs e)
     {
         if (tbSearch.Text.Trim().Length == 0)
@@ -53,12 +68,20 @@ public partial class AdminWindow : Window
             dgUsers.ItemsSource = response;
         }
     }
-
+    /// <summary>
+    /// Обработчик закрытия окна
+    /// </summary>
+    /// <param name="sender">Отправитель</param>
+    /// <param name="e">Событие</param>
     private void BtnExit_OnClick(object sender, RoutedEventArgs e)
     {
         Application.Current.Shutdown();
     }
-
+    /// <summary>
+    /// Обработчик события смены выбранного элемента Combobox
+    /// </summary>
+    /// <param name="sender">Отправитель</param>
+    /// <param name="e">Событие</param>
     private void CbList_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         
@@ -88,6 +111,11 @@ public partial class AdminWindow : Window
         }
     }
 
+    /// <summary>
+    /// Обработчик события нажатия кнопки добавления и перераспределение на соответствующее окно добавления
+    /// </summary>
+    /// <param name="sender">Отправитель</param>
+    /// <param name="e">Событие</param>
     private void BtnAdd_OnClick(object sender, RoutedEventArgs e)
     {
         ComboBoxItem typeItem = (ComboBoxItem)cbList.SelectedItem;
@@ -122,7 +150,12 @@ public partial class AdminWindow : Window
                 break;
         }
     }
-
+    
+    /// <summary>
+    /// Обработчик события нажатия кнопки и переход на окно добавления выпуска
+    /// </summary>
+    /// <param name="sender">Отправитель</param>
+    /// <param name="e">Событие</param>
     private void BtnPullIssue_OnClick(object sender, RoutedEventArgs e)
     {
         AddIssue addIssue = new AddIssue();
@@ -131,6 +164,11 @@ public partial class AdminWindow : Window
         this.Hide();
     }
 
+    /// <summary>
+    /// Обработчик события нажатия кнопки и перераспределение на соответствующее окно обновления
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void BtnUpdate_OnClick(object sender, RoutedEventArgs e)
     {
         ComboBoxItem typeItem = (ComboBoxItem)cbList.SelectedItem;
@@ -206,7 +244,5 @@ public partial class AdminWindow : Window
                     break;
             }
         }
-        
-
     }
 }
