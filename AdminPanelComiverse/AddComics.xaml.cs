@@ -66,7 +66,7 @@ public partial class AddComics : Window
     /// <param name="e">Событие</param>
     private void BtnCreateAdd_OnClick(object sender, RoutedEventArgs e)
     {
-        if (btnCreateAdd.Content == "Создать")
+        if (btnCreateAdd.Content.ToString() == "Создать")
         {
             if (tbPath.Text.Trim().Length == 0 
                 || tbComicsDescription.Text.Trim().Length == 0
@@ -104,7 +104,7 @@ public partial class AddComics : Window
         }
         else
         {
-            if (btnCreateAdd.Content == "Изменить")
+            if (btnCreateAdd.Content.ToString() == "Изменить")
             {
                 if (tbComicsDescription.Text.Trim().Length == 0
                     || tbComicsName.Text.Trim().Length == 0

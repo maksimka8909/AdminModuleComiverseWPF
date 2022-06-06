@@ -59,7 +59,7 @@ public partial class AddAuthor : Window
     /// <param name="e">Событие</param>
     private void BtnCreateAdd_OnClick(object sender, RoutedEventArgs e)
     {
-        if (btnCreateAdd.Content == "Создать")
+        if (btnCreateAdd.Content.ToString() == "Создать")
         {
             if (tbPath.Text.Trim().Length == 0
                 || tbAuthorDescription.Text.Trim().Length == 0
@@ -96,7 +96,7 @@ public partial class AddAuthor : Window
         }
         else
         {
-            if (btnCreateAdd.Content == "Изменить")
+            if (btnCreateAdd.Content.ToString() == "Изменить")
             {
                 if (tbAuthorDescription.Text.Trim().Length == 0
                     || tbAuthorName.Text.Trim().Length == 0

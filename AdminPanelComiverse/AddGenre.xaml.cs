@@ -50,7 +50,7 @@ public partial class AddGenre : Window
         }
         else
         {
-            if (btnCreateAdd.Content == "Создать")
+            if (btnCreateAdd.Content.ToString() == "Создать")
             {
                 var response = apiClient.Post<MassageClass>(new RestRequest("genre")
                     .AddBody( new Genre(){Name = tbGenreName.Text}));

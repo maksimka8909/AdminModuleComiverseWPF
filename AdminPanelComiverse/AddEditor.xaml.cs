@@ -105,6 +105,5 @@ public partial class AddEditor : Window
                 }
             }
         }
-        
     }
 }
